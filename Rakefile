@@ -16,4 +16,3 @@ end
 
 task :test, &mrspec
 task :spec, &mrspec
-end
