@@ -1,5 +1,9 @@
-;(function() {
-  $(function() {
-    new Vue({el: "#jaunts", data: {}})
+;(function () {
+  "use strict"
+  $(function () {
+    new Vue({
+      el: "body",
+      data: {}
+    })
   })
 })();
