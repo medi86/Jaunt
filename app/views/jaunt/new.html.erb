@@ -1,0 +1,10 @@
+<%= form_for @jaunt do |f| %>
+  <%= f.label  :title %>
+  <%= f.text_field  :title %>
+  <br>
+  <%= f.label  :start_location %>
+  <br>
+  <%= f.label  :end_location %>
+  <br>
+  <%= f.submit "Submit Jaunt" %>
+<% end %>
