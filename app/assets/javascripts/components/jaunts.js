@@ -7,6 +7,7 @@
     data: function() {
       return {
         jauntTitle: "",
+        jauntDescription: "",
         locations: [],
       }
     },
@@ -19,7 +20,7 @@
         google.maps.event.addListener(places, 'place_changed', function () {
           var place = places.getPlace();
           var address = place.formatted_address;
-          self.locations.push(address)
+          self.locations.push({address: address, description: "", name: place.name})
           document.getElementById('addLocation').value = ''
         })
       })
@@ -37,7 +38,7 @@
         $.ajax({
           method: "POST",
           url: "/",
-          data: {jaunt: {title: self.jauntTitle, addresses: self.locations}}
+          data: {jaunt: {jaunt_title: self.jauntTitle, jaunt_description: self.jauntDescription, addresses: self.locations}}
         })
     }}
   })

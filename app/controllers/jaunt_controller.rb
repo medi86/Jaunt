@@ -4,8 +4,11 @@ class JauntController < ApplicationController
   end
 
   def create
-    addresses = params[:jaunt][:addresses].map { |address| Location.new(address: address)}
-    Jaunt.create(title: params[:jaunt][:title], locations: addresses)
+    addresses = params[:jaunt][:addresses].map do |pos, loc|
+      Location.new(address: loc[:address], description: loc[:description], position: pos)
+    end
+
+    Jaunt.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
     redirect_to jaunts_path
   end
 end

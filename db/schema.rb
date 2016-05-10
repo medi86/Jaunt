@@ -15,16 +15,18 @@ ActiveRecord::Schema.define(version: 20160509203635) do
 
   create_table "jaunts", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "locations", force: :cascade do |t|
     t.string   "address"
+    t.text     "description"
     t.integer  "position"
     t.integer  "jaunt_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
