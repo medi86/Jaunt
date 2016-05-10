@@ -1,0 +1,23 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+      <h2> <%= @jaunt.title %> </h2>
+    </div>
+    <div class="panel-body">
+        <h2> <%= @jaunt.description  %></h2>
+    </div>
+</div>
+
+
+
+
+<% @jaunt.locations.each do |location| %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h2> <%= location.address %> </h2>
+    </div>
+    <div class="panel-body">
+        <h2> <%= location.description  %></h2>
+    </div>
+</div>
+<% end %>
+
