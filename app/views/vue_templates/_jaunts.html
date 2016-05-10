@@ -7,9 +7,11 @@
           <span>Jaunt Title: </span>
           <input type="text" v-model="jauntTitle" class="form-control"></input>
           </li>
+          <div v-for="location in locations">
+               {{location}}
+          </div>
           <li>
-          <span>Start Location: </span>
-          <input type="text" id="startLocation" style="width: 250px" placeholder="Enter a location" class="form-control"/>
+          <input type="text" id="addLocation" style="width: 250px" placeholder="Add a location" class="form-control"/>
           </li>
           <li>
           <span>End Location: </span>
@@ -17,7 +19,7 @@
           </li>
 
           <li>
-          <input type="button" value="Create Jaunt" class="btn btn-primary"></input>
+          <input type="submit" value="Create Jaunt" class="btn btn-primary" > </input>
           </li>
         </ul>
       </script>
