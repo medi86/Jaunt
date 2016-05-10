@@ -1,4 +1,8 @@
 class JauntController < ApplicationController
+  def home
+
+  end
+
   def index
     @jaunts = Jaunt.all
   end

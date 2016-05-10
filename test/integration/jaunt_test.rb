@@ -5,7 +5,7 @@ class JauntTest < ActionDispatch::IntegrationTest
   start_location = "National Louis University, 122 South Michigan Avenue, Chicago, IL 60603"
   end_location   = "The Art Institute of Chicago, 111 South Michigan Avenue, Chicago, IL 60603"
 
-  page.visit new_jaunt_path
+  page.visit jaunts_path
 
   assert page.has_content?("Jaunt Title: ")
   assert page.has_content?("Start Location: ")
