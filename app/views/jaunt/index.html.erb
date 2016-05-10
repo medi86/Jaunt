@@ -1,8 +1,12 @@
-<%= @jaunts.each do |jaunt| %>
-  <%= locations = jaunt.locations %>
-  <%= locations.each do |location| %>
-    <%= location.address %>
-    <br>
-  <% end %>
-<% end %>
-<%= link_to "Create a jaunt", new_jaunt_path %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= @jaunts.each do |jaunt| %>
+      <%= locations = jaunt.locations %>
+      <%= locations.each do |location| %>
+        <%= location.address %>
+        <br>
+      <% end %>
+    <% end %>
+    <%= link_to "Create a jaunt", new_jaunt_path %>
+  </div>
+</div>
