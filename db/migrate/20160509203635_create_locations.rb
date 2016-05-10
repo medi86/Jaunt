@@ -2,6 +2,7 @@ class CreateLocations < ActiveRecord::Migration
   def change
     create_table :locations do |t|
       t.string :address
+      t.text :description
       t.integer :position
       t.integer :jaunt_id
 

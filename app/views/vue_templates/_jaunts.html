@@ -2,23 +2,32 @@
   <div class="col-md-6 col-md-offset-3">
     <script id="jaunts-template" type="text/template">
       <form v-on:submit.prevent="addJaunt">
-        <ul>
-          <li>
-          <span>Jaunt Title: </span>
-          <input type="text" v-model="jauntTitle" class="form-control"></input>
-          </li>
-          <div v-for="location in locations">
-               {{location}}
+          <div class ='panel panel-primary'>
+          <div class = 'panel-heading'> Jaunt Title: </div>
+          <div class = 'panel-body'>
+          <input type="text" v-model="jauntTitle" class="form-control"placeholder="Give this jaunt a name"></input>
           </div>
-          <li>
+          </div>
+          <div class ='panel panel-primary'>
+          <div class = 'panel-heading'> Jaunt Description: </div>
+          <div class = 'panel-body'>
+          <textarea v-model="jauntDescription" class="form-control" placeholder="Tell us about what you do on this jaunt..."></textarea>
+          </div>
+          </div>
+          <div class = 'panel panel-primary' v-for="(index, location) in locations">
+          <div class = 'panel-heading'> {{location.name}}: {{location.address}}</div>
+          <div class = 'panel-body'>
+            <br>
+            <textarea v-model="locations[index].description" class="form-control" placeholder="Tell us about what you do on this jaunt..."></textarea>
+            <hr>
+          </div>
+          </div>
+          <div>
           <input type="text" id="addLocation" style="width: 250px" placeholder="Add a location" class="form-control"/>
-          </li>
-          <li>
+          </div>
+          <div>
           <input type="submit" value="Create Jaunt" class="btn btn-primary" > </input>
-          </li>
-        </ul>
+          </div>
       </script>
     </div>
   </div>
-  <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRnu5-lREeEF4SJaDJOnNIpAMItFKHqZ8&libraries=places"></script> -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRnu5-lREeEF4SJaDJOnNIpAMItFKHqZ8&libraries=places"></script> -->
