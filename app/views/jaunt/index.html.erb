@@ -1,22 +1,12 @@
 <% @jaunts.each do |jaunt| %>
-  <% locations = jaunt.locations %>
   <div class="panel panel-info">
-    <div class="panel panel-heading">
+    <div class="panel-heading">
       <h2> <%= link_to jaunt.title %> </h2>
     </div>
-    <div class="panel panel-body">
-      <% locations.each do |location| %>
-        <h2> <%= location.address %></h2>
-      <% end %>
+    <div class="panel-body">
+        <h2> <%= jaunt.description  %></h2>
     </div>
-  <% end %>
 </div>
-
-
-
-<% @jaunts.each do |jaunt| %>
-  <% locations = jaunt.locations %>
-  <% locations.each do |location| %>
-    <% location.address %>
-  <% end %>
 <% end %>
+
+

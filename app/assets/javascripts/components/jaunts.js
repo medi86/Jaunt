@@ -39,7 +39,7 @@
           method: "POST",
           url: "/",
           data: {jaunt: {jaunt_title: self.jauntTitle, jaunt_description: self.jauntDescription, addresses: self.locations}}
-        })
+        }).then(jaunt => router.go('/show/{{jaunt.id}}'))
     }}
   })
 })();
