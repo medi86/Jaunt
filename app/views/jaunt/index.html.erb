@@ -1,24 +1,25 @@
-<% @jaunts.each do |jaunt| %>
-  <% locations = jaunt.locations %>
-  <%= jaunt.title %>
-  <br>
-  <% locations.each do |location| %>
-    <%= location.address %>
-    <br>
-  <% end %>
-<% end %>
-<br>
-<%= link_to "Create a jaunt", new_jaunt_path %>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= @jaunts.each do |jaunt| %>
-      <%= locations = jaunt.locations %>
-      <%= locations.each do |location| %>
+    <% @jaunts.each do |jaunt| %>
+      <% locations = jaunt.locations %>
+
+      <%= link_to jaunt.title, :class =>"panel panel-default"  %>
+
+      <br>
+      <% locations.each do |location| %>
         <%= location.address %>
-        <br>
-      <% end %>
-    <% end %>
-    <%= link_to "Create a jaunt", new_jaunt_path %>
-  </div>
+      <br>
+  <% end %>
+<% end %>
 </div>
+</div>
+
+
+
+<% @jaunts.each do |jaunt| %>
+  <% locations = jaunt.locations %>
+  <% locations.each do |location| %>
+  <% location.address %>
+  <br>
+<% end %>
+<% end %>
