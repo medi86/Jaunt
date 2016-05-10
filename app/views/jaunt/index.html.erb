@@ -1,1 +1,8 @@
+<%= @jaunts.each do |jaunt| %>
+  <%= locations = jaunt.locations %>
+  <%= locations.each do |location| %>
+    <%= location.address %>
+    <br>
+  <% end %>
+<% end %>
 <%= link_to "Create a jaunt", new_jaunt_path %>
