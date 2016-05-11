@@ -37,9 +37,9 @@
         var self = this
         $.ajax({
           method: "POST",
-          url: "/",
+          url: "/jaunts",
           data: {jaunt: {jaunt_title: self.jauntTitle, jaunt_description: self.jauntDescription, addresses: self.locations}}
-        }).then(jaunt => router.go('/show/{{jaunt.id}}'))
+        }).then(jaunt =>  window.location.replace("/show/"+jaunt.id))
     }}
   })
 })();
