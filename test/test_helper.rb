@@ -12,6 +12,8 @@ Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, phantomjs: Phantomjs.path)
 end
 
+Capybara.current_driver = :poltergeist
+
 class ActiveSupport::TestCase
   fixtures :all
   # Add more helper methods to be used by all tests here...
