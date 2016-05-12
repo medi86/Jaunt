@@ -1,8 +1,8 @@
 ;(function () {
   "use strict"
 
-  Vue.component("vue-new-jaunt", {
-    template: "#new-jaunt-template",
+    Vue.component("vue-new-jaunt", {
+      template: "#new-jaunt-template",
 
   data: function() {
     return {
