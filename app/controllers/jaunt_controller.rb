@@ -1,10 +1,12 @@
 class JauntController < ApplicationController
   def home
-
   end
 
   def index
     @jaunts = Jaunt.all
+  end
+
+  def new
   end
 
   def create
@@ -12,7 +14,10 @@ class JauntController < ApplicationController
       Location.new(address: loc[:address], description: loc[:description], position: pos)
     end
 
-    Jaunt.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
-    redirect_to jaunts_path
+   render json: Jaunt.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
+  end
+
+  def show
+    @jaunt = Jaunt.find_by_id(params[:id])
   end
 end
