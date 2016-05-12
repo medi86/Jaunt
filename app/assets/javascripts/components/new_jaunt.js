@@ -20,6 +20,7 @@
       var places = new google.maps.places.Autocomplete(document.getElementById('addLocation'));
       google.maps.event.addListener(places, 'place_changed', function () {
         var place = places.getPlace();
+        console.log(place)
         var address = place.formatted_address;
         self.locations.push({address: address, description: "", name: place.name})
         document.getElementById('addLocation').value = ''
@@ -29,17 +30,18 @@
       })
     })
 
-    $(window).keydown(function(event) {
-      if(event.keyCode == 13) {
-        event.preventDefault()
-      }
-    })
+    //$(window).keydown(function(event) {
+     // if(event.keyCode == 13) {
+      //  event.preventDefault()
+    //  }
+   // })
 
-  var mappyDo = function initMap() {
-        var myLatLng = {lat: -25.363, lng: 131.044};
+   window.onload = function initMap() {
+        var myLatLng = {lat: 37.5665, lng: 126.9780}
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 10,
+          minZoom: 4,
           center: myLatLng
         })
         var marker = new google.maps.Marker({
@@ -49,7 +51,16 @@
         })
         self.map = map
   }
-  mappyDo()
+
+
+       navigator.geolocation.getCurrentPosition(function(position) {
+         var pos = {
+           lat: position.coords.latitude,
+           lng: position.coords.longitude
+         }
+         self.map.setCenter(pos)
+         })
+
          },
 
     methods: {
