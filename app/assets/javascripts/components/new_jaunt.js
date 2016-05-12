@@ -20,7 +20,6 @@
       var places = new google.maps.places.Autocomplete(document.getElementById('addLocation'));
       google.maps.event.addListener(places, 'place_changed', function () {
         var place = places.getPlace();
-        console.log(place)
         var address = place.formatted_address;
         self.locations.push({address: address, description: "", name: place.name})
         document.getElementById('addLocation').value = ''
@@ -30,10 +29,10 @@
       })
     })
 
-    //$(window).keydown(function(event) {
-     // if(event.keyCode == 13) {
-      //  event.preventDefault()
-    //  }
+   // $(window).keydown(function(event) {
+    //  if(event.keyCode == 13) {
+     //  event.preventDefault()
+    // }
    // })
 
    window.onload = function initMap() {
