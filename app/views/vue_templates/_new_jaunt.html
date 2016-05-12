@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <script id="new-jaunt-template" type="text/template">
-      <form v-on:submit.prevent="addJaunt">
+      <v-on:submit.prevent="addJaunt">
         <div class ='panel panel-primary'>
           <div class = 'panel-heading'> Jaunt Title: </div>
           <div class = 'panel-body'>
@@ -29,7 +29,7 @@
         </div>
         </div>
         <div>
-          <input type="submit" value="Create Jaunt" class="btn btn-primary"> </input>
+          <button v-on:click="addJaunt()" value="Create Jaunt" class="btn btn-primary">Submit Your Jaunt!</button>
         </div>
         <div id="map" style="width:100%;height:380px;"></div>
       </script>
