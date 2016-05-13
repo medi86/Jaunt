@@ -65,7 +65,7 @@
          method: "POST",
          url: "/jaunts",
          data: {jaunt: {jaunt_title: self.jauntTitle, jaunt_description: self.jauntDescription, addresses: self.locations}}
-       }).then(jaunt =>  window.location.replace("/show/"+jaunt.id))
+       }).then(function(jaunt) { window.location.replace("/show/"+jaunt.id)})
     }
    }
   })
