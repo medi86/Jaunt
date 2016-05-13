@@ -32,7 +32,7 @@
     })
 
     window.onload = function initMap() {
-      var myLatLng = {lat: 41.8781, lng: 87.6298}
+      var myLatLng = {lat: 25.8781, lng: 97.6298}
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,

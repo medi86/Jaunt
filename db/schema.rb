@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160513192346) do
     t.integer  "jaunt_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "coordinates"
     t.float    "latitude"
     t.float    "longitude"
   end
