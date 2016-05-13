@@ -5,42 +5,40 @@
       <script>
         window.onload = function initMap() {
 
-          var myLatLng = {lat: parseInt(gon.jaunt.lat), lng: parseInt(gon.jaunt.lng)}
-          //var myLatLng = {lat: 37.5665, lng: 126.9780}
+          var myLatLng = {lat:gon.jaunt.latitude, lng:gon.jaunt.longitude}
 
           var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 9,
+            zoom: 14,
             minZoom: 4,
             center: myLatLng
           })
 
-        self.map = map
+          self.map = map
 
           new google.maps.Marker({map: self.map, position: myLatLng})
-
-      }
-    </script>
-  </div>
-  <div class="col-md-6">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h2> <%= @jaunt.title %> </h2>
-      </div>
-      <div class="panel-body">
-        <h2> <%= @jaunt.description  %></h2>
-      </div>
+        }
+      </script>
     </div>
-
-    <% @jaunt.locations.each do |location| %>
+    <div class="col-md-6">
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h2> <%= location.address %> </h2>
+          <h2> <%= @jaunt.title %> </h2>
         </div>
         <div class="panel-body">
-          <h2> <%= location.description  %></h2>
+          <h2> <%= @jaunt.description  %></h2>
         </div>
       </div>
-    <% end %>
+
+      <% @jaunt.locations.each do |location| %>
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2> <%= location.address %> </h2>
+          </div>
+          <div class="panel-body">
+            <h2> <%= location.description  %></h2>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>
