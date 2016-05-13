@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Jaunt</title>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCRnu5-lREeEF4SJaDJOnNIpAMItFKHqZ8&libraries=places"></script>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= render "layouts/nav" %>
-<%= yield %>
-</body>
+  <head>
+    <title>Jaunt</title>
+
+    <%= include_gon(:init => true) %>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCRnu5-lREeEF4SJaDJOnNIpAMItFKHqZ8&libraries=places"></script>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "layouts/nav" %>
+    <%= yield %>
+  </body>
 </html>
