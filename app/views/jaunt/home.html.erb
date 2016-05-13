@@ -1,12 +1,16 @@
-<div class="landingIcons">
-  <div id="icons">
-    <%= link_to image_tag("jaunt_logo.jpg"), jaunts_path %>
-    <br>
-  <%= link_to 'Find a Jaunt', jaunts_path ,:class => "btn btn-primary" %>
-  <%= link_to 'Create a Jaunt', new_jaunt_path ,:class => "btn btn-primary" %>
+<%= image_tag("jaunt.jpg",class: "homeimage") %>
+<div class="container">
+  <div class="landingIcons">
+    <div id="icons">
+      <%= link_to image_tag("jaunt_logo.jpg"), jaunts_path %>
+      <br>
+      <%= link_to 'Find a Jaunt', jaunts_path ,:class => "btn btn-primary" %>
+      <%= link_to 'Create a Jaunt', new_jaunt_path ,:class => "btn btn-primary" %>
+    </div>
+
+    <div>
+      <h1>Jaunt makes it easy to find and share jaunts, or short excursions for pleasure.</h1>
+    </div>
+  </div>
 </div>
 
-<div>
-  <h1>Jaunt makes it easy to find and share jaunts, or short excursions for pleasure.</h1>
-</div>
-</div>

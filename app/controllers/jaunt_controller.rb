@@ -14,7 +14,7 @@ class JauntController < ApplicationController
       Location.new(address: loc[:address], description: loc[:description], position: pos)
     end
 
-   render json: Jaunt.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
+    render json: current_user.jaunts.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
   end
 
   def show
