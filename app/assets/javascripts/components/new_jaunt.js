@@ -24,7 +24,7 @@
         var address = place.formatted_address;
         if (!address)
           return false;
-          
+
         self.locations.push({address: address, description: "", name: place.name})
         document.getElementById('addLocation').value = ''
 
@@ -46,11 +46,6 @@
           zoom: 10,
           minZoom: 4,
           center: myLatLng
-        })
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
         })
         self.map = map
   }
