@@ -27,6 +27,9 @@ end
 group :test do
   gem 'capybara'
   gem 'mrspec'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
 end

@@ -11,8 +11,7 @@ class JauntController < ApplicationController
 
   def create
     addresses = params[:jaunt][:addresses].map do |pos, loc|
-     latlng = JSON.dump(loc[:coordinates])
-     Location.new(address: loc[:address], description: loc[:description], position: pos, coordinates: latlng)
+     Location.new(address: loc[:address], description: loc[:description], position: pos, latitude: loc[:coordinates][:lat], longitude: loc[:coordinates][:lng])
     end
 
     render json: current_user.jaunts.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
@@ -20,7 +19,7 @@ class JauntController < ApplicationController
 
   def show
     @jaunt = Jaunt.find_by_id(params[:id])
-    gon.jaunt = JSON.parse(@jaunt.locations[0].coordinates)
+    gon.jaunt = @jaunt.locations[0]
   end
 
   def destroy
