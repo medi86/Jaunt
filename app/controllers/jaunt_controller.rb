@@ -21,4 +21,10 @@ class JauntController < ApplicationController
     @jaunt = Jaunt.find_by_id(params[:id])
     gon.jaunt = @jaunt.locations[0]
   end
+
+  def destroy
+    jaunt = Jaunt.find(params[:id])
+    jaunt.destroy
+    redirect_to jaunts_path
+  end
 end
