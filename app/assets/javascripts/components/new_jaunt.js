@@ -20,7 +20,11 @@
       var places = new google.maps.places.Autocomplete(document.getElementById('addLocation'));
       google.maps.event.addListener(places, 'place_changed', function () {
         var place = places.getPlace();
+        console.log('place', place);
         var address = place.formatted_address;
+        if (!address)
+          return false;
+          
         self.locations.push({address: address, description: "", name: place.name})
         document.getElementById('addLocation').value = ''
 
