@@ -36,12 +36,12 @@
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
-        minZoom: 4,
+        minZoom: 9,
         center: myLatLng
       })
       var marker = new google.maps.Marker({
         position: myLatLng,
-        map: map,
+        map: map
       })
       self.map = map
     }
@@ -53,6 +53,9 @@
       }
       self.map.setCenter(pos)
      })
+
+     $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
+     $('#jaunt-locations').max-height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
    },
 
    methods: {
