@@ -11,7 +11,7 @@ class JauntController < ApplicationController
 
   def create
     addresses = params[:jaunt][:addresses].map do |pos, loc|
-      Location.new(address: loc[:address], description: loc[:description], position: pos)
+      Location.new(address: loc[:address], description: loc[:description], position: pos, coordinates: loc[:coordinates].to_s)
     end
 
     render json: current_user.jaunts.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
