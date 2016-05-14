@@ -6,13 +6,13 @@
 
       <div class="col-md-6 ">
 
-        <div class ='panel panel-primary'>
+        <div class ='panel panel-primary' id="jaunt-title">
           <div class = 'panel-heading'>
             <span>Jaunt Title</span>
           </div>
 
-          <div class = 'panel-body'>
-            <input type="text" v-model="jauntTitle" class="form-control"placeholder="Give this jaunt a name"></input>
+          <div class='panel-body'>
+            <input type="text" id="jaunt-title-text" v-model="jauntTitle" class="form-control"placeholder="Give this jaunt a name"></input>
           </div>
         </div>
 
@@ -22,7 +22,7 @@
           </div>
 
           <div class = 'panel-body'>
-            <textarea v-model="jauntDescription" class="form-control" placeholder="Tell us about what you do on this jaunt..."></textarea>
+            <textarea id="jaunt-desc-text" v-model="jauntDescription" class="form-control" placeholder="Tell us about what you do on this jaunt..."></textarea>
           </div>
         </div>
 
@@ -47,20 +47,21 @@
           </div>
         </div>
 
-        <div class='panel panel-primary' id = 'locationPanel'>
+        <div class='panel panel-primary' id='locationPanel'>
           <div class='panel-heading'>
             <span>Jaunt Locations</span>
           </div>
 
 
           <div class = 'panel-body' id='jaunt-locations' style='overflow-y: scroll'>
-            <div class='panel panel-primary' v-for="(index, location) in locations">
+            <span id="locationsPlaceholder" v-if="locations.length === 0">Your locations will show up here when you enter them</span>
+            <div class='panel panel-primary' v-for="(index, location) in locations" id="location-{{index}}">
               <div class='panel-heading' >
                 <span>{{location.name}}, {{location.address}}</span>
               </div>
 
               <div class='panel-body'>
-                <textarea v-model="locations[index].description"  class="form-control" placeholder="Tell us why this place is great... "></textarea>
+                <textarea id="location-{{index}}-text" v-model="locations[index].description"  class="form-control" placeholder="Tell us why this place is great... "></textarea>
               </div>
                 <button class='btn btn-primary' type='submit' v-on:click='deleteLocation(index, location)'>X</button>
           </div>

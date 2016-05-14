@@ -32,7 +32,7 @@
     })
 
     window.onload = function initMap() {
-      var myLatLng = {lat: 41.8781, lng: 87.6298}
+      var myLatLng = {lat: 25.8781, lng: 97.6298}
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
@@ -47,15 +47,51 @@
     }
      $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
    },
+
    methods: {
      addJaunt: function() {
-       var self = this
+     var self = this
+     var checkLocations = function(locations) {
+         locations.forEach(function(loc) {
+           if (loc.description === "") {
+             return false
+           }
+         })
+         return true
+     }
+     var changeLocations = function(locations) {
+       locations.forEach(function(loc, index) {
+         if(loc.description === "") {
+           $("#location-" + index).toggleClass("panel-danger")
+           $("#location-" + index + "-text").attr("placeholder", "Please enter a description")
+         }
+       })
+     }
+
+     if(self.locations.length === 0) {
+       $("#locationPanel").toggleClass("panel-danger")
+       $("#locationsPlaceholder").html("Please enter at least one location for your jaunt")
+
+     } else if(self.jauntTitle === "") {
+       $("#jaunt-title").toggleClass("panel-danger")
+       $("#jaunt-title-text").attr("placeholder", "Please enter a title")
+
+     } else if(self.jauntDescription === "") {
+       $("#jaunt-desc").toggleClass("panel-danger")
+       $("#jaunt-desc-text").attr("placeholder", "Please enter a description")
+
+     } else if(checkLocations(self.locations)) {
+       changeLocations(self.locations)
+
+     } else {
        $.ajax({
          method: "POST",
          url: "/jaunts",
          data: {jaunt: {jaunt_title: self.jauntTitle, jaunt_description: self.jauntDescription, addresses: self.locations}}
        }).then(function(jaunt) { window.location.replace("/show/"+jaunt.id)})
+     }
     },
+
     deleteLocation: function(index, location){
       this.locations.splice(index, 1)
    }
