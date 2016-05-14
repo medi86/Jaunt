@@ -47,7 +47,6 @@
     }
      $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
    },
-
    methods: {
      addJaunt: function() {
        var self = this

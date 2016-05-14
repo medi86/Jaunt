@@ -25,16 +25,34 @@ RSpec.describe('jaunts', {type: :feature}) do
     page.click_button "Create Jaunt"
   end
 
-   scenario('test a user can find a jaunt', {js: true}) do
-    Jaunt.create!(title: "Test", description: "Test Description",
-                  locations: [Location.new(address: "Test Place", description: "We do tests")])
+   scenario('a user can navigate the page', {js: true}) do
+    page.visit root_path
+    assert page.has_content?("Find a Jaunt")
+    page.click_link("Find a Jaunt")
 
-    page.visit jaunts_path
+    expect(page.current_path).to eql('/index')
+    assert page.has_link?('Create Jaunts')
+    page.click_link("Create Jaunts")
 
-    assert page.has_content?("Test")
-    assert page.has_content?("Test Description")
-    page.click_link("Test")
-    assert page.has_content?("Test Place")
-    assert page.has_content?("We do tests")
+    expect(page.current_path).to eql('/new')
+    assert page.has_link?("Sign-up")
+    page.click_link("Sign-up")
+
+    expect(page.current_path).to eql('/signup')
   end
+
+   scenario('a user can find a jaunt', {js: true}) do
+     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription',
+                   locations: [Location.new(address: '123 fake st', latitude: 41.23, longitude: -87.23), Location.new(address: '123 superfake st', latitude: 49.23, longitude: -82.23)])
+     page.visit root_path
+     page.click_link('Find a Jaunt')
+     assert page.has_content?('testJaunt')
+     page.click_link('testJaunt')
+     expect(page.current_path).to eql("/show/#{jaunt.id}")
+     assert page.has_content?(jaunt.description)
+     assert page.has_content?(jaunt.locations.first.address)
+     assert page.has_content?(jaunt.locations.first.description)
+     assert page.has_content?(jaunt.locations.last.address)
+     assert page.has_content?(jaunt.locations.last.description)
+   end
 end

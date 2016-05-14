@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <div class='panel panel-primary'>
+        <div class='panel panel-primary' id = 'locationPanel'>
           <div class='panel-heading'>
             <span>Jaunt Locations</span>
           </div>
@@ -55,12 +55,12 @@
 
           <div class = 'panel-body' id='jaunt-locations' style='overflow-y: scroll'>
             <div class='panel panel-primary' v-for="(index, location) in locations">
-              <div class='panel-heading'>
+              <div class='panel-heading' >
                 <span>{{location.name}}, {{location.address}}</span>
               </div>
 
               <div class='panel-body'>
-                <textarea v-model="locations[index].description" class="form-control" placeholder="Tell us why this place is great... "></textarea>
+                <textarea v-model="locations[index].description"  class="form-control" placeholder="Tell us why this place is great... "></textarea>
               </div>
                 <button class='btn btn-primary' type='submit' v-on:click='deleteLocation(index, location)'>X</button>
           </div>
