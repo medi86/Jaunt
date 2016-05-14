@@ -62,6 +62,7 @@
               <div class='panel-body'>
                 <textarea v-model="locations[index].description" class="form-control" placeholder="Tell us why this place is great... "></textarea>
               </div>
+                <button class='btn btn-primary' type='submit' v-on:click='deleteLocation(index, location)'>X</button>
           </div>
         </div>
         </div>

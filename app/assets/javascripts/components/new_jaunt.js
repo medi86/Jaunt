@@ -56,7 +56,10 @@
          url: "/jaunts",
          data: {jaunt: {jaunt_title: self.jauntTitle, jaunt_description: self.jauntDescription, addresses: self.locations}}
        }).then(function(jaunt) { window.location.replace("/show/"+jaunt.id)})
-    }
+    },
+    deleteLocation: function(index, location){
+      this.locations.splice(index, 1)
+   }
    }
   })
 })();
