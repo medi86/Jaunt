@@ -9,7 +9,7 @@
       jauntTitle: "",
       jauntDescription: "",
       locations: [],
-      map: {}
+      markers: []
     }
   },
 
@@ -27,21 +27,18 @@
         self.locations.push({address: address, description: "", name: place.name, coordinates: coords})
         document.getElementById('addLocation').value = ''
 
-        new google.maps.Marker({map: self.map, position: coords})
+        var marker = new google.maps.Marker({map: self.map, position: coords})
+        self.markers.push(marker)
       })
     })
 
     window.onload = function initMap() {
-      var myLatLng = {lat: 41.8781, lng: 87.6298}
+      var myLatLng = {lat: 41.8803, lng: -87.6249}
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         minZoom: 9,
         center: myLatLng
-      })
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map
       })
       self.map = map
     }
@@ -58,6 +55,8 @@
     },
     deleteLocation: function(index, location){
       this.locations.splice(index, 1)
+      this.markers[index].setMap(null)
+      this.markers.splice(index, 1)
    }
    }
   })
