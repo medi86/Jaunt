@@ -45,17 +45,7 @@
       })
       self.map = map
     }
-
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      }
-      self.map.setCenter(pos)
-     })
-
      $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
-     $('#jaunt-locations').max-height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
    },
 
    methods: {

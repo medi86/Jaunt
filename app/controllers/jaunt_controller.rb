@@ -14,6 +14,7 @@ class JauntController < ApplicationController
      Location.new(address: loc[:address], description: loc[:description], position: pos, latitude: loc[:coordinates][:lat], longitude: loc[:coordinates][:lng])
     end
 
+    flash[:success] = "New jaunt is made!"
     render json: current_user.jaunts.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
   end
 
