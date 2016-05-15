@@ -32,6 +32,7 @@ group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
+  gem 'selenium-webdriver', '~> 2.53'
 end
 
 
