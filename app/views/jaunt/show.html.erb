@@ -42,5 +42,6 @@
     </div>
   </div>
 </div>
-
+<% if current_user.id == @jaunt.user.id %>
 <%= link_to "Delete this Jaunt", delete_jaunt_path(@jaunt), method: :delete, data: {confirm: "This can not be undone"}, class: "btn btn-danger" %>
+<% end %>
