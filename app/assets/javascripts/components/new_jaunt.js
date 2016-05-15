@@ -48,6 +48,7 @@
    methods: {
      addJaunt: function() {
      var self = this
+
      var checkLocations = function(locations) {
          locations.forEach(function(loc) {
            if (loc.description === "") {
@@ -56,6 +57,7 @@
          })
          return false
      }
+
      var changeLocations = function(locations) {
        locations.forEach(function(loc, index) {
          if(loc.description === "") {
@@ -66,26 +68,21 @@
      }
 
      if(self.locations.length === 0) {
-    console.log("1")
        $("#locationPanel").toggleClass("panel-danger")
        $("#locationsPlaceholder").html("Please enter at least one location for your jaunt")
 
      } else if(self.jauntTitle === "") {
-    console.log("2")
        $("#jaunt-title").toggleClass("panel-danger")
        $("#jaunt-title-text").attr("placeholder", "Please enter a title")
 
      } else if(self.jauntDescription === "") {
-    console.log("3")
        $("#jaunt-desc").toggleClass("panel-danger")
        $("#jaunt-desc-text").attr("placeholder", "Please enter a description")
 
      } else if(checkLocations(self.locations)) {
-    console.log("4")
        changeLocations(self.locations)
 
      } else {
-    console.log("Hi")
        $.ajax({
          method: "POST",
          url: "/jaunts",
