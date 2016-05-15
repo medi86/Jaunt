@@ -10,7 +10,8 @@
       jauntDescription: "",
       locations: [],
       markers: [],
-      editForm: false
+      editForm: false,
+      jauntId: null
     }
   },
 
@@ -25,7 +26,10 @@
         if (!address){ return false }
 
         var coords = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
-        self.locations.push({address: address, description: "", name: place.name, coordinates: coords})
+        self.locations.push({address: address,
+                             description: "",
+                             name: place.name,
+                             coordinates: coords})
         document.getElementById('addLocation').value = ''
 
         var marker = new google.maps.Marker({map: self.map, position: coords})
@@ -38,6 +42,7 @@
       self.jauntDescription = gon.jaunt.jaunt_description
       self.locations = gon.jaunt.addresses
       self.editForm = true
+      self.jauntId = gon.jaunt.jaunt_id
     }
 
     window.onload = function initMap() {
@@ -101,7 +106,11 @@
        $.ajax({
          method: "POST",
          url: "/jaunts",
-         data: {jaunt: {jaunt_title: self.jauntTitle, jaunt_description: self.jauntDescription, addresses: self.locations}}
+         data: {jaunt: {jaunt_id: self.jauntId,
+                        jaunt_title: self.jauntTitle,
+                        jaunt_description: self.jauntDescription,
+                        addresses: self.locations}
+               }
        }).then(function(jaunt) { window.location.replace("/show/"+jaunt.id)})
      }
     },
