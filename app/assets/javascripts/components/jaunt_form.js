@@ -50,6 +50,7 @@
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 9,
         minZoom: 3,
+        maxZoom: 12,
         center: myLatLng
       })
       self.map = map
