@@ -20,6 +20,7 @@
 
     google.maps.event.addDomListener(window, 'load', function () {
       var places = new google.maps.places.Autocomplete(document.getElementById('addLocation'));
+      var bounds = new google.maps.LatLngBounds()
       google.maps.event.addListener(places, 'place_changed', function () {
         var place = places.getPlace();
         var address = place.formatted_address;
@@ -33,7 +34,10 @@
         document.getElementById('addLocation').value = ''
 
         var marker = new google.maps.Marker({map: self.map, position: coords})
+        var latLng = marker.getPosition()
         self.markers.push(marker)
+        bounds.extend(marker.position)
+        self.map.fitBounds(bounds)
       })
     })
 
@@ -49,8 +53,8 @@
       var myLatLng = {lat: 41.8803, lng: -87.6249}
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        minZoom: 9,
+        zoom: 9,
+        minZoom: 3,
         center: myLatLng
       })
       self.map = map
