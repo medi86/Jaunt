@@ -1,6 +1,7 @@
 class JauntController < ApplicationController
+  include JauntHelper
+  before_action :require_login, only: [:new, :create]
 
-  before_action :require_login, only: [:new]
   def home
   end
 
@@ -12,21 +13,17 @@ class JauntController < ApplicationController
   end
 
   def edit
+    gon.jaunt = export(Jaunt.find_by_id(params[:id]))
   end
 
   def create
-    addresses = params[:jaunt][:addresses].map do |pos, loc|
-     Location.new(address: loc[:address], description: loc[:description], position: pos, latitude: loc[:coordinates][:lat], longitude: loc[:coordinates][:lng])
-    end
-
     flash[:success] = "New jaunt! Thank you!"
-
-    render json: current_user.jaunts.create(title: params[:jaunt][:jaunt_title], description: params[:jaunt][:jaunt_description], locations: addresses)
+    render json: import(params[:jaunt])
   end
 
   def show
     @jaunt = Jaunt.find_by_id(params[:id])
-    gon.jaunt = @jaunt.locations[0]
+    gon.jaunt = export(@jaunt)[:addresses]
   end
 
   def destroy

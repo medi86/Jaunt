@@ -32,6 +32,10 @@
       })
     })
 
+    self.jauntTitle = gon.jaunt.jaunt_title
+    self.jauntDescription = gon.jaunt.jaunt_description
+    self.locations = gon.jaunt.addresses
+
     window.onload = function initMap() {
       var myLatLng = {lat: 41.8803, lng: -87.6249}
 
@@ -41,6 +45,10 @@
         center: myLatLng
       })
       self.map = map
+      gon.jaunt.addresses.forEach(function(loc) {
+        var marker = new google.maps.Marker({map: self.map, position: loc.coordinates})
+        self.markers.push(marker)
+      })
     }
      $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
    },
