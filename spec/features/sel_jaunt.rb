@@ -29,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=session_password</td>
-	<td>eksl1208</td>
+	<td>asdf1234</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -77,7 +77,7 @@
 	<td>\13</td>
 </tr>
 <tr>
-	<td>type</td>
+	<td>sendKeys</td>
 	<td>id=location-0-text</td>
 	<td>test</td>
 </tr>

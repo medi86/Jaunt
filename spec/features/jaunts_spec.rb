@@ -24,36 +24,34 @@ RSpec.describe('jaunts', {type: :feature}) do
     page.fill_in("Tell us about what you do on this jaunt...", with: "Test Description")
 
     page.fill_in("Add a location", with: "national louis university")
-    # page.ExpandSelect()
-    page.find_by_id("addLocation").native.send_key(:arrow_down)
-    page.find_by_id("addLocation").native.send_key(:enter)
-   save_screenshot('before.png', full: true)
+    page.find_by_id("addLocation").native.send_keys(:arrow_down)
+    page.find_by_id("addLocation").native.send_keys(:return)
 
     page.fill_in("Add a location", with: "art institute")
-    page.find_by_id("addLocation").native.send_key(:arrow_down)
-    page.find_by_id("addLocation").native.send_key(:enter)
+    page.find_by_id("addLocation").native.send_keys(:arrow_down)
+    page.find_by_id("addLocation").native.send_keys(:return)
 
     page.click_button "Create Jaunt"
     assert page.has_content?("Edit this Jaunt")
     assert page.has_content?("Delete this Jaunt")
-  end
+   end
 
    scenario('a user can navigate the page', {js: true}) do
-    page.visit root_path
-    assert page.has_content?("Find a Jaunt")
-    page.click_link("Find a Jaunt")
+     page.visit root_path
+     assert page.has_content?("Find a Jaunt")
+     page.click_link("Find a Jaunt")
 
-    expect(page.current_path).to eql('/index')
+     expect(page.current_path).to eql('/index')
 
-    assert page.has_link?("Sign-up")
-    page.click_link("Sign-up")
+     assert page.has_link?("Sign-up")
+     page.click_link("Sign-up")
 
-    expect(page.current_path).to eql('/signup')
-  end
+     expect(page.current_path).to eql('/signup')
+   end
 
    scenario('a user can find a jaunt', {js: true}) do
      jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription',
-                   locations: [Location.new(address: '123 fake st', latitude: 41.23, longitude: -87.23), Location.new(address: '123 superfake st', latitude: 49.23, longitude: -82.23)])
+                           locations: [Location.new(address: '123 fake st', latitude: 41.23, longitude: -87.23), Location.new(address: '123 superfake st', latitude: 49.23, longitude: -82.23)])
      page.visit root_path
      page.click_link('Find a Jaunt')
      assert page.has_content?('testJaunt')
