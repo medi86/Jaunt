@@ -1,15 +1,16 @@
 ;(function () {
   "use strict"
 
-  Vue.component("vue-edit-jaunt", {
-  template: "#edit-jaunt-template",
+  Vue.component("vue-jauntform", {
+  template: "#jaunt-form-template",
 
   data: function() {
     return {
       jauntTitle: "",
       jauntDescription: "",
       locations: [],
-      markers: []
+      markers: [],
+      editForm: false
     }
   },
 
@@ -32,9 +33,12 @@
       })
     })
 
-    self.jauntTitle = gon.jaunt.jaunt_title
-    self.jauntDescription = gon.jaunt.jaunt_description
-    self.locations = gon.jaunt.addresses
+    if(gon.jaunt) {
+      self.jauntTitle = gon.jaunt.jaunt_title
+      self.jauntDescription = gon.jaunt.jaunt_description
+      self.locations = gon.jaunt.addresses
+      self.editForm = true
+    }
 
     window.onload = function initMap() {
       var myLatLng = {lat: 41.8803, lng: -87.6249}
@@ -45,10 +49,13 @@
         center: myLatLng
       })
       self.map = map
-      gon.jaunt.addresses.forEach(function(loc) {
-        var marker = new google.maps.Marker({map: self.map, position: loc.coordinates})
-        self.markers.push(marker)
-      })
+
+      if(gon.jaunt) {
+        gon.jaunt.addresses.forEach(function(loc) {
+          var marker = new google.maps.Marker({map: self.map, position: loc.coordinates})
+          self.markers.push(marker)
+        })
+      }
     }
      $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-desc').height()) - 50)
    },
@@ -99,11 +106,15 @@
      }
     },
 
+    moveLocationInList: function(from, to) {
+      this.locations.splice(to, 0, this.locations.splice(from, 1)[0]);
+    },
+
     deleteLocation: function(index, location){
       this.locations.splice(index, 1)
       this.markers[index].setMap(null)
       this.markers.splice(index, 1)
-   }
+    }
    }
   })
 })();

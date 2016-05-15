@@ -1,4 +1,4 @@
-<script id="new-jaunt-template" type="text/template">
+<script id="jaunt-form-template" type="text/template">
 
 <div class="container">
 
@@ -76,7 +76,8 @@
 
     <div class='row'>
       <div class="col-md-12 ">
-        <input type="submit" v-on:click="addJaunt()" value="Create Jaunt" class="btn btn-warning"></input>
+        <input v-if="!editForm" type="submit" v-on:click="addJaunt()" value="Create Jaunt" class="btn btn-warning"></input>
+        <input v-if="editForm" type="submit" v-on:click="addJaunt()" value="Update Jaunt" class="btn btn-warning"></input>
       </div>
     </div>
 </div>
