@@ -3,12 +3,11 @@ require 'rails_helper'
 RSpec.describe('jaunts', {type: :feature}) do
 
    scenario('a user can create a new jaunt', {js: true}) do
+    skip
     nlu = "National Louis University, 122 South Michigan Avenue, Chicago, IL 60603"
     art = "The Art Institute of Chicago, 111 South Michigan Avenue, Chicago, IL 60603"
 
-    page.visit root_path
-    assert page.has_content?("Create a Jaunt")
-    page.click_link("Create a Jaunt")
+    page.visit new_jaunt_path
 
     assert page.has_content?("Jaunt Title")
     page.fill_in("Give this jaunt a name", with: "Test Title")
@@ -31,10 +30,7 @@ RSpec.describe('jaunts', {type: :feature}) do
     page.click_link("Find a Jaunt")
 
     expect(page.current_path).to eql('/index')
-    assert page.has_link?('Create Jaunts')
-    page.click_link("Create Jaunts")
 
-    expect(page.current_path).to eql('/new')
     assert page.has_link?("Sign-up")
     page.click_link("Sign-up")
 
