@@ -91,6 +91,11 @@
      }
     },
 
+     moveLocationInList: function(from, to) {
+          this.locations.splice(to, 0, this.locations.splice(from, 1)[0]);
+
+    },
+
     deleteLocation: function(index, location){
       this.locations.splice(index, 1)
       this.markers[index].setMap(null)
