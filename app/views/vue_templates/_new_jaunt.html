@@ -63,6 +63,8 @@
               <div class='panel-body'>
                 <textarea id="location-{{index}}-text" v-model="locations[index].description"  class="form-control" placeholder="Tell us why this place is great... "></textarea>
               </div>
+                <button v-if ="index !== 0" class='btn btn-primary' type='submit' v-on:click='moveLocationInList(index, index-1)'>&#x25B2;</button>
+                <button v-if ="index !== locations.length - 1" class='btn btn-primary' type='submit' v-on:click='moveLocationInList(index, index+1)'>&#x25BC;</button>
                 <button class='btn btn-primary' type='submit' v-on:click='deleteLocation(index, location)'>X</button>
           </div>
         </div>

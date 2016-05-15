@@ -14,8 +14,9 @@
           })
 
           self.map = map
-
-          new google.maps.Marker({map: self.map, position: myLatLng})
+          for (i=0, i>markerArray.length, i++) {
+          new google.maps.Marker({map: self.map, position: markerArray[i]})
+        }
         }
       </script>
     </div>
