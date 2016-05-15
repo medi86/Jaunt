@@ -108,6 +108,7 @@
 
     moveLocationInList: function(from, to) {
       this.locations.splice(to, 0, this.locations.splice(from, 1)[0]);
+      this.markers.splice(to, 0, this.markers.splice(from, 1)[0]);
     },
 
     deleteLocation: function(index, location){
