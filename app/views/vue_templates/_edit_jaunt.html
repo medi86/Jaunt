@@ -1,0 +1,82 @@
+<script id="edit-jaunt-template" type="text/template">
+
+<div class="container">
+
+    <div class='row'>
+
+      <div class="col-md-6 ">
+
+        <div class ='panel panel-primary' id="jaunt-title">
+          <div class = 'panel-heading'>
+            <span>Jaunt Title</span>
+          </div>
+
+          <div class='panel-body'>
+            <input type="text" id="jaunt-title-text" v-model="jauntTitle" class="form-control"placeholder="Give this jaunt a name"></input>
+          </div>
+        </div>
+
+        <div class ='panel panel-primary' id='jaunt-desc'>
+          <div class = 'panel-heading'>
+            <span>Jaunt Description</span>
+          </div>
+
+          <div class = 'panel-body'>
+            <textarea id="jaunt-desc-text" v-model="jauntDescription" class="form-control" placeholder="Tell us about what you do on this jaunt..."></textarea>
+          </div>
+        </div>
+
+        <div class ='panel panel-primary' id='jaunt-map'>
+          <div class = 'panel-heading'>
+            <span>Jaunt Map</span>
+          </div>
+            <div class='panel-body' id="map" style="width:100%;height:380px;"></div>
+        </div>
+
+      </div>
+
+      <div class ="col-md-6" style="height: 100%">
+
+        <div class ='panel panel-success'>
+          <div class = 'panel-heading'>
+            <span>Add a location</span>
+          </div>
+
+          <div class = 'panel-body'>
+            <input type="text" id="addLocation" style="width: 250px" placeholder="Add a location" class="form-control"></input>
+          </div>
+        </div>
+
+        <div class='panel panel-primary' id='locationPanel'>
+          <div class='panel-heading'>
+            <span>Jaunt Locations</span>
+          </div>
+
+
+          <div class = 'panel-body' id='jaunt-locations' style='overflow-y: scroll'>
+            <span id="locationsPlaceholder" v-if="locations.length === 0">Your locations will show up here when you enter them</span>
+            <div class='panel panel-primary' v-for="(index, location) in locations" id="location-{{index}}">
+              <div class='panel-heading' >
+                <span>{{location.name}}, {{location.address}}</span>
+              </div>
+
+              <div class='panel-body'>
+                <textarea id="location-{{index}}-text" v-model="locations[index].description"  class="form-control" placeholder="Tell us why this place is great... "></textarea>
+              </div>
+                <button class='btn btn-primary' type='submit' v-on:click='deleteLocation(index, location)'>X</button>
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class='row'>
+      <div class="col-md-12 ">
+        <input type="submit" v-on:click="addJaunt()" value="Update Jaunt" class="btn btn-warning"></input>
+      </div>
+    </div>
+</div>
+
+</script>

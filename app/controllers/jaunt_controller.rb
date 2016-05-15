@@ -11,6 +11,9 @@ class JauntController < ApplicationController
   def new
   end
 
+  def edit
+  end
+
   def create
     addresses = params[:jaunt][:addresses].map do |pos, loc|
      Location.new(address: loc[:address], description: loc[:description], position: pos, latitude: loc[:coordinates][:lat], longitude: loc[:coordinates][:lng])

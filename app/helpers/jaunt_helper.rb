@@ -1,0 +1,2 @@
+module JauntHelper
+end
