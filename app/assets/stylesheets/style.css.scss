@@ -162,3 +162,15 @@ input {
   display: inline-block;
   width: 1436px;
 }
+
+#search{
+  width: 1px;
+  height: 1px;
+  position: absolute; left: -9999px;
+  float: left;
+  visibility: hidden;
+}
+
+#searchbar{
+  margin-top: 14px;
+}
