@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe('users_signup', {type: :feature}) do
+RSpec.describe('User Signup', {type: :feature}) do
 
-  scenario('guest can sign up with right parameters', {js: true}) do
+  scenario('guest can sign up with right parameters') do
     page.visit root_path
     assert page.has_content?("Sign-up")
     page.click_link("Sign-up")
@@ -18,5 +18,4 @@ RSpec.describe('users_signup', {type: :feature}) do
 
     page.click_button "Create my account"
   end
-
 end
