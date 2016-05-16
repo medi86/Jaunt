@@ -3,5 +3,5 @@ class Jaunt < ActiveRecord::Base
   belongs_to :user
 
   include Tire::Model::Search
-  # include Tire::Model::Callbacks
+  include Tire::Model::Callbacks
 end
