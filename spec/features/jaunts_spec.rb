@@ -26,7 +26,7 @@ RSpec.describe('Full Site', {type: :feature}) do
     page.fill_in("location-0-text", with: "hell")
 
     page.click_button("Create Jaunt")
-    wait_for { current_path }.to eq("/show/0")
+    wait_for { current_path }.to eq("/show/1")
     assert page.has_content?("122 S Michigan Ave")
     assert page.has_content?("Delete this Jaunt")
   end
