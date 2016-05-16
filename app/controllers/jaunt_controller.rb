@@ -1,5 +1,4 @@
 class JauntController < ApplicationController
-  include JauntHelper
   before_action :require_login, only: [:new, :create]
 
   def home

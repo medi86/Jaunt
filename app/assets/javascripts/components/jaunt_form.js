@@ -50,13 +50,13 @@
     }
 
     window.onload = function initMap() {
-      var myLatLng = {lat: 41.8803, lng: -87.6249}
+      var chicago = {lat: 41.8803, lng: -87.6249}
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 9,
+        zoom: 10,
         minZoom: 3,
-        maxZoom: 12,
-        center: myLatLng
+        maxZoom: 16,
+        center: chicago
       })
       self.map = map
 
