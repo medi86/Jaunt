@@ -1,3 +1,9 @@
+<%= form_tag jaunts_path, method: :get do %>
+  <p>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Search Jaunts", name: nil %>
+  </p>
+<% end %>
 <%= image_tag("jaunts.jpg", class: "homeimage") %>
 <div class="container">
   <div class="row">
