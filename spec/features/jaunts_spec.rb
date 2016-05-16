@@ -24,6 +24,7 @@ RSpec.describe('Full Site', {type: :feature}) do
     page.find_by_id("addLocation").native.send_keys(:return)
 
     page.click_button("Create Jaunt")
+    wait_for { current_path }.to eq("/show/0")
     assert page.has_content?("Edit this Jaunt")
     assert page.has_content?("Delete this Jaunt")
   end
