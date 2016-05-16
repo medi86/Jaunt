@@ -3,7 +3,7 @@
   $(function () {
     new Vue({
       el: "body",
-      data: {}
+      data: {jaunt: gon.jaunt}
     })
    })
 })();

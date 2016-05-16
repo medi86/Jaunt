@@ -9,6 +9,7 @@ class JauntController < ApplicationController
   end
 
   def new
+    gon.jaunt = export(Jaunt.new)
   end
 
   def edit
