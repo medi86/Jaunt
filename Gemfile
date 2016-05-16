@@ -29,6 +29,7 @@ group :test do
   gem 'mrspec'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'rspec-wait'
   gem 'database_cleaner'
   gem 'selenium-webdriver', '~> 2.53'
 end
