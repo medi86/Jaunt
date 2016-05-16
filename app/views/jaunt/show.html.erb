@@ -1,50 +1,78 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div id="map" style="width:100%;height:380px;"></div>
-      <script>
-        window.onload = function initMap() {
 
-          var myLatLng = {lat:gon.jaunt.latitude, lng:gon.jaunt.longitude}
-
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 14,
-            minZoom: 4,
-            center: myLatLng
-          })
-
-          self.map = map
-          for (i=0, i>markerArray.length, i++) {
-          new google.maps.Marker({map: self.map, position: markerArray[i]})
-        }
-        }
-      </script>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-info">
+      <div class="panel panel-success" id="jaunt-desc">
         <div class="panel-heading">
-          <h2> <%= @jaunt.title %> </h2>
+          <span> <%= @jaunt.title %> </span>
         </div>
         <div class="panel-body">
-          <h2> <%= @jaunt.description  %></h2>
+          <span> <%= @jaunt.description  %></span>
         </div>
       </div>
 
-      <% @jaunt.locations.each do |location| %>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h2> <%= location.address %> </h2>
-          </div>
-          <div class="panel-body">
-            <h2> <%= location.description  %></h2>
-          </div>
+      <div class='panel panel-success'>
+        <div class="panel-heading">
+          <span>Jaunt Map</span>
         </div>
-      <% end %>
-    </div>
-  </div>
+        <div id="map" style="width:100%;height:380px;"></div>
+        <script>
 
-<% if current_user.id == @jaunt.user.id %>
-  <%= link_to "Delete this Jaunt", delete_jaunt_path(@jaunt), method: :delete, data: {confirm: "This can not be undone"}, class: "btn btn-danger" %>
-  <%= link_to "Edit this Jaunt",   edit_jaunt_path(@jaunt), class: "btn btn-danger" %>
-<% end %>
+          var bounds = new google.maps.LatLngBounds()
+          window.onload = function initMap() {
+
+            var myLatLng = gon.jaunt[0].coordinates
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 9,
+              minZoom: 3,
+              maxZoom: 12,
+              center: myLatLng
+            })
+
+            self.map = map
+            for (i=0; i<gon.jaunt.length; i++) {
+              var marker = new google.maps.Marker({map: self.map, position: gon.jaunt[i].coordinates})
+              bounds.extend(marker.position)
+
+
+            }
+
+            self.map.fitBounds(bounds)
+            $('#jaunt-locations').height(($('#map').height() + $('#jaunt-desc').height()) - 8)
+          }
+        </script>
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      <div class='panel panel-success'>
+        <div class="panel-heading">
+          <span>Jaunt Locations</span>
+        </div>
+        <div class = 'panel-body' id='jaunt-locations' style='overflow-y: scroll'>
+
+          <% @jaunt.locations.each do |location| %>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <span> <%= location.name+", "+location.address %> </span>
+              </div>
+              <div class="panel-body">
+                <span> <%= location.description  %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% if current_user.id == @jaunt.user.id %>
+      <div class="col-md-6">
+        <%= link_to "Delete this Jaunt", delete_jaunt_path(@jaunt), method: :delete, data: {confirm: "This can not be undone"}, class: "btn btn-danger btn-block" %>
+      </div>
+      <div class="col-md-6">
+        <%= link_to "Edit this Jaunt",   edit_jaunt_path(@jaunt), class: "btn btn-danger btn-block" %>
+      </div>
+    <% end %>
+  </div>
 </div>
