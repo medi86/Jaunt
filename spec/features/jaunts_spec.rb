@@ -23,6 +23,8 @@ RSpec.describe('Full Site', {type: :feature}) do
     page.find_by_id("addLocation").native.send_keys(:arrow_down)
     page.find_by_id("addLocation").native.send_keys(:return)
 
+    page.fill_in("location-0-text", with: "hell")
+
     page.click_button("Create Jaunt")
     wait_for { current_path }.to eq("/show/0")
     assert page.has_content?("122 S Michigan Ave")
