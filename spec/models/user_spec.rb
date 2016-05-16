@@ -1,9 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('users', {type: :model}) do
-
-#user name
-
+RSpec.describe('User', {type: :model}) do
   it "user has name" do
     user = User.new(name: "DongmAn")
     user.save
@@ -27,8 +24,6 @@ RSpec.describe('users', {type: :model}) do
     user2 = User.create(name: "dongmin")
     user2.name == nil
   end
-
-  #user email
 
   it "user has email" do
     user = User.new(email: "medi8600@gmail.com")
@@ -54,8 +49,6 @@ RSpec.describe('users', {type: :model}) do
     user2.email == nil
   end
 
-  #user password
-
   it 'user has encrypted password' do
     user = User.new(password: 'password')
     user.save
@@ -66,6 +59,5 @@ RSpec.describe('users', {type: :model}) do
     user = User.create(password: '1234567')
     user.password_digest == nil
   end
-
 end
 
