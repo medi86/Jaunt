@@ -6,7 +6,7 @@
   props: ["jaunt"],
   data: function() {
     return {
-      editForm: false,
+      editForm: gon.editPage,
     }
   },
 
@@ -22,6 +22,7 @@
       center: {lat: 41.8803, lng: -87.6249}
     })
     self.directionsDisplay.setMap(self.map)
+    if(gon.editPage) {self.getDirections(); self.editPage = false}
 
     google.maps.event.addDomListener(window, 'load', function () {
       var places = new google.maps.places.Autocomplete(self.$els.addLocation)

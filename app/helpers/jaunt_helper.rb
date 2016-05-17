@@ -5,7 +5,6 @@ module JauntHelper
                   name: loc[:name],
                   address: loc[:address],
                   description: loc[:description],
-                  latitude: loc[:coordinates][:lat], longitude: loc[:coordinates][:lng]
                  )
     end
 
