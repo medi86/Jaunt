@@ -9,7 +9,7 @@ Rails.application.routes.draw do
    get  '/show/:id',  to: 'jaunt#show',   as: 'show_jaunt'
    delete '/show/:id',   to: 'jaunt#destroy', as: 'delete_jaunt'
 
-   post '/index', to: 'jaunt#index'
+   post '/search', to: 'jaunt#search'
 
    get    'signup'  => 'users#new'
    get    'login'   => 'sessions#new'
