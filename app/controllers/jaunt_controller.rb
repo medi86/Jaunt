@@ -5,7 +5,7 @@ class JauntController < ApplicationController
   end
 
   def index
-    @jaunts = Jaunt.search(params)
+    @jaunts = Jaunt.all
   end
 
   def new
