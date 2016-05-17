@@ -10,14 +10,4 @@ RSpec.describe('Location', {type: :model}) do
     location = Location.create(description: "test description")
     location.description == "test description"
   end
-
-  it "location has a latitude" do
-    location = Location.create(latitude: 43.444)
-    location.latitude == 43.444
-  end
-
-  it "location has a longitude" do
-    location = Location.create(longitude: 83.444)
-    location.longitude == 83.444
-  end
 end
