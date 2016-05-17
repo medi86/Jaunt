@@ -2,28 +2,18 @@ class JauntController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def search
-     @search = params[:address]
-
-     @search = Location.where("address=?", @search)
-     @search = @search[0][:jaunt_id]
-     @jaunts = [Jaunt.find_by(:id == @search)]
-     require "pry"
-     binding.pry
+      search = params[:address]
+      search = Location.where("address=?", search)
+      search = search[0][:jaunt_id]
+      render json: [Jaunt.find_by(:id == search)]
   end
 
   def home
   end
 
   def index
-    #@search = params[:address]
-   # if @search
-   #   @search = Location.where("address=?", @search)
-   #   @search = @search[0][:jaunt_id]
-   #   @jaunts = [Jaunt.find_by(:id == @search)]
-
-   # else
-      @jaunts = Jaunt.all
-   # end
+    gon.jaunts = Jaunt.all
+    render "search"
   end
 
   def new
