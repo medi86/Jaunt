@@ -10,10 +10,12 @@ class JauntController < ApplicationController
 
   def new
     gon.jaunt = export(Jaunt.new)
+    gon.editPage = false
   end
 
   def edit
     gon.jaunt = export(Jaunt.find_by_id(params[:id]))
+    gon.editPage = true
   end
 
   def create
