@@ -16,17 +16,16 @@ module JauntHelper
   end
 
   def export(ar_jaunt)
-    addresses = ar_jaunt.locations.map do |loc|
+    locations = ar_jaunt.locations.map do |loc|
       { address: loc.address,
         name: loc.name,
         description: loc.description,
-        coordinates: {lat: loc.latitude, lng: loc.longitude}
       }
     end
     { id: ar_jaunt.id,
       title: ar_jaunt.title,
       description: ar_jaunt.description,
-      locations: addresses
+      locations: locations
     }
   end
 end
