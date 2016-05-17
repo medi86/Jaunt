@@ -42,7 +42,7 @@
                   <span>{{location.name}}, {{location.address}}</span>
                 </div>
                 <div class='panel-body'>
-                  <textarea id="location-{{index}}-text" v-model="jaunt.locations[index].description"  class="form-control" placeholder="Tell us why this place is great... "></textarea>
+                  <span id="location-{{index}}-text">{{jaunt.locations[index].description}}</span>
                 </div>
               </div>
             </div>
