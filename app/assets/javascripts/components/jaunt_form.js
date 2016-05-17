@@ -116,7 +116,7 @@
         destination: self.jaunt.locations[self.jaunt.locations.length - 1].address,
         waypoints: waypoints,
         travelMode: google.maps.TravelMode.WALKING
-        }, function(response, status) { self.directionsDisplay.setDirections(response)})
+        }, function(response) { self.directionsDisplay.setDirections(response)})
     },
    }
   })

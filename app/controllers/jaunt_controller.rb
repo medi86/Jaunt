@@ -25,7 +25,7 @@ class JauntController < ApplicationController
 
   def show
     @jaunt = Jaunt.find_by_id(params[:id])
-    gon.jaunt = export(@jaunt)[:addresses]
+    gon.locations = export(@jaunt)[:locations]
   end
 
   def destroy
