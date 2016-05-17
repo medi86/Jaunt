@@ -5,7 +5,7 @@ class JauntController < ApplicationController
   end
 
   def index
-    @jaunts = Jaunt.search(params)
+    @jaunts = Jaunt.all
   end
 
   def new
@@ -24,8 +24,7 @@ class JauntController < ApplicationController
   end
 
   def show
-    @jaunt = Jaunt.find_by_id(params[:id])
-    gon.locations = export(@jaunt)[:locations]
+    gon.jaunt = export(Jaunt.find_by_id(params[:id]))
   end
 
   def destroy

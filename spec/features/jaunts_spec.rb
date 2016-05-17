@@ -26,16 +26,14 @@ RSpec.describe('Full Site', {type: :feature}) do
     page.fill_in("location-0-text", with: "hell")
 
     page.click_button("Create Jaunt")
-    wait_for { current_path }.to eq("/show/1")
     assert page.has_content?("122 S Michigan Ave")
-    assert page.has_content?("Delete this Jaunt")
   end
 
   scenario('a user who is logged-in can navigate the entire page', {js: true}) do
     user = User.create!(name: "dongmin", email: "medi8600@gmail.com", password: "asdf1234")
 
     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription', locations:
-                  [Location.new(address: '123 fake st', name: "fake name", latitude: 41.23, longitude: -87.23)])
+                  [Location.new(address: '123 fake st', name: "fake name")])
 
     page.visit login_path
     page.fill_in("session_email", with: "medi8600@gmail.com")
@@ -66,7 +64,7 @@ RSpec.describe('Full Site', {type: :feature}) do
 
   scenario('a user who is not-logged-in can only navigate the non-user sections of the page', {js: true}) do
     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription', locations:
-                  [Location.new(address: '123 fake st', name: "fake name", latitude: 41.23, longitude: -87.23)])
+                  [Location.new(address: '123 fake st', name: "fake name")])
 
     page.visit root_path
     assert page.has_content?("Find a Jaunt")
@@ -92,8 +90,8 @@ RSpec.describe('Full Site', {type: :feature}) do
 
   scenario('a user can find a jaunt', {js: true}) do
     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription',
-                          locations: [Location.new(address: '123 fake st', name: "fake name", latitude: 41.23, longitude: -87.23),
-                                      Location.new(address: '123 superfake st', name: "superfake name", latitude: 49.23, longitude: -82.23)])
+                          locations: [Location.new(address: '123 fake st', name: "fake name"),
+                                      Location.new(address: '123 superfake st', name: "superfake name")])
     page.visit jaunts_path
     assert page.has_content?('testJaunt')
     page.click_link('testJaunt')
