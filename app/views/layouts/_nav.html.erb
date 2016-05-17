@@ -14,12 +14,12 @@
         <li><%= link_to "Log-In", login_path %></li>
       <% end %>
       <li><%= link_to "Sign-up", signup_path %></li>
-      <li>
-      <%= form_tag jaunts_path, method: :get do %>
-        <%= text_field_tag :query, params[:query], id: "searchbar", placeholder: "Search Jaunts"  %>
-        <%= submit_tag "Search Jaunts", name: nil, id: "search" %>
-      <% end %>
-      </li>
+      <%# <li> %>
+      <%# <%= form_tag jaunts_path, method: :get do %1> %>
+      <%#   <%= text_field_tag :query, params[:query], id: "searchbar", placeholder: "Search Jaunts"  %1> %>
+      <%#   <%= submit_tag "Search Jaunts", name: nil, id: "search" %1> %>
+      <%# <% end %1> %>
+      <%# </li> %>
   </ul>
   </nav>
 </div>

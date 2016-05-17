@@ -15,9 +15,6 @@ gem 'bootstrap-sass'
 gem 'dotenv-rails'
 gem 'bcrypt'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-gem 'tire'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
