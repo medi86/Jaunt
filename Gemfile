@@ -15,9 +15,12 @@ gem 'bootstrap-sass'
 gem 'dotenv-rails'
 gem 'bcrypt'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 gem 'tire'
+gem 'mocha', group: 'test', require: 'mocha/api'
+gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'quiet_assets', group: 'development'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
