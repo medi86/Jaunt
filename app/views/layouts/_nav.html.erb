@@ -14,6 +14,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Create Jaunts", new_jaunt_path  %></li>
           <li><%= link_to "Find a Jaunt", search_path  %></li>
+
           <% if logged_in? %>
             <li><%= link_to "My Jaunts", user_path(current_user) %></li>
             <li><%= link_to "Log out", logout_path, method: "delete" %></li>
@@ -29,6 +30,7 @@
             </ul>
             </li>
           <% end %>
+
           <% if !logged_in? %>
             <li><%= link_to "Sign-up", signup_path %></li>
           <% end %>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
    get    'login'   => 'sessions#new'
    get    'new_session'     => 'sessions#new'
    post   'login'   => 'sessions#create'
+   get    'logout'  => 'sessions#destroy'
    delete 'logout'  => 'sessions#destroy'
 
    devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
