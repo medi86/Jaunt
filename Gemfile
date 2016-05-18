@@ -16,9 +16,10 @@ gem 'dotenv-rails'
 gem 'bcrypt'
 
 gem "omniauth"
+gem "omniauth-oauth2"
 gem "omniauth-google-oauth2"
-gem "omniauth-twitter"
 gem "omniauth-facebook"
+gem "oauth"
 gem "devise"
 
 gem 'activerecord-session_store'
