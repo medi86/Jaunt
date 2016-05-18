@@ -43,19 +43,11 @@ RSpec.describe('Full Site', {type: :feature}) do
     page.visit root_path
     assert page.has_content?("Find a Jaunt")
     page.click_link("Find a Jaunt")
-    expect(page.current_path).to eql('/index')
+    expect(page.current_path).to eql('/search')
 
     assert page.has_content?("testJaunt")
     page.click_link("testJaunt")
     expect(page.current_path).to eql("/show/#{jaunt.id}")
-
-    assert page.has_link?("Sign-up")
-    page.click_link("Sign-up")
-    expect(page.current_path).to eql('/signup')
-
-    assert page.has_link?("Log-in")
-    page.click_link("Log-in")
-    expect(page.current_path).to eql('/login')
 
     assert page.has_content?("Create Jaunts")
     page.click_link("Create Jaunts")
@@ -69,7 +61,7 @@ RSpec.describe('Full Site', {type: :feature}) do
     page.visit root_path
     assert page.has_content?("Find a Jaunt")
     page.click_link("Find a Jaunt")
-    expect(page.current_path).to eql('/index')
+    expect(page.current_path).to eql('/search')
 
     assert page.has_content?("testJaunt")
     page.click_link("testJaunt")
@@ -92,7 +84,7 @@ RSpec.describe('Full Site', {type: :feature}) do
     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription',
                           locations: [Location.new(address: '123 fake st', name: "fake name"),
                                       Location.new(address: '123 superfake st', name: "superfake name")])
-    page.visit jaunts_path
+    page.visit search_path
     assert page.has_content?('testJaunt')
     page.click_link('testJaunt')
     expect(page.current_path).to eql("/show/#{jaunt.id}")

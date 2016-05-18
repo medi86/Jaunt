@@ -24,7 +24,7 @@
             url: "/search",
             data: { address: address }
 
-          }).then(function(jaunts) {self.jaunts =jaunts })
+          }).then(function(jaunts) {self.jaunts = jaunts})
         });
       })
     },
