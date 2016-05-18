@@ -18,6 +18,7 @@ gem 'bcrypt'
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-twitter"
+gem "omniauth-facebook"
 gem "devise"
 
 gem 'activerecord-session_store'
