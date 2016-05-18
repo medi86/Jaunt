@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :jaunts
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :registerable,:omniauthable, :omniauth_providers => [:google_oauth2, :facebook]
 
+  has_many :jaunts
   before_save { self.email = email.downcase }
   mount_uploader :avatar, AvatarUploader
 
@@ -15,5 +18,19 @@ class User < ActiveRecord::Base
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                         BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
+  end
+
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(:email => data["email"]).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    unless user
+        user = User.create(name: data["name"],
+           email: data["email"],
+           password: Devise.friendly_token[0,20]
+        )
+    end
+    user
   end
 end

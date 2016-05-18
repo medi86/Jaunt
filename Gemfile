@@ -14,6 +14,15 @@ gem 'gon'
 gem 'bootstrap-sass'
 gem 'dotenv-rails'
 gem 'bcrypt'
+
+gem "omniauth"
+gem "omniauth-oauth2"
+gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
+gem "oauth"
+gem "devise"
+
+gem 'activerecord-session_store'
 gem 'carrierwave'
 
 group :development, :test do
