@@ -10,6 +10,9 @@ gem 'vuejs-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 gem 'gon'
 gem 'bootstrap-sass'
 gem 'dotenv-rails'
@@ -21,6 +24,7 @@ gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
 gem "oauth"
 gem "devise"
+gem "mini_magick"
 
 gem 'activerecord-session_store'
 
