@@ -1,11 +1,9 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :omniauth_providers => [:google_oauth2, :facebook]
 
   has_many :jaunts
   before_save { self.email = email.downcase }
-  mount_uploader :avatar, AvatarUploader
 
   validates :name,  presence: true, length: { maximum: 30 },uniqueness:
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
