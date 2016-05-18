@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    u.avatar = params[:file]
     if @user.save
       flash[:success] = "Congratuation! Welcome to Jaunt!"
       log_in @user
