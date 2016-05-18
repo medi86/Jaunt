@@ -95,4 +95,19 @@ RSpec.describe('Full Site', {type: :feature}) do
     assert page.has_content?(jaunt.locations.last.address)
     assert page.has_content?(jaunt.locations.last.description)
   end
+
+  scenario('a user can create a new account') do
+
+    page.visit "/signup"
+    page.fill_in("user_name",                  with: "Test User")
+    page.fill_in("user_email",                 with: "test@testy.test")
+    page.fill_in("user_password",              with: "testtest")
+    page.fill_in("user_password_confirmation", with: "testtest")
+    page.click_button "Create my account"
+
+    test_user = User.first
+    expect(test_user.name).to eql("Test User")
+    expect(page.current_path).to eql("/users/#{test_user.id}")
+    assert page.has_content?("Test User's Jaunts")
+  end
 end

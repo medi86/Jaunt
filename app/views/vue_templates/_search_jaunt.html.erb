@@ -1,23 +1,29 @@
 <script id="search-jaunt-template" type="text/template">
-<div id="searchbar">
-    <div id="locationField">
-      <input id="autocomplete" v-el:auto-complete  placeholder="Search Jaunts" type="text"></input>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
 
-        <div class="panel panel-info" v-for="jaunt in jaunts">
-          <div class="panel-heading">
-            <a href= "/show/{{jaunt.id}}"><h2>{{jaunt.title}}</h2></a>
-          </div>
-          <div class="panel-body">
-            <h2>  {{jaunt.description}} </h2>
-          </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-info" id="searchbar">
+        <div class="panel-heading">
+          <h2>Search a Location by Address</h2>
         </div>
+        <div class="panel-body" id="locationField">
+          <input class="form-control" id="autocomplete" v-el:auto-complete  placeholder="Search Jaunts" type="text"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="panel panel-info" v-for="jaunt in jaunts">
+        <div class="panel-heading">
+          <a href= "/show/{{jaunt.id}}"><h2>{{jaunt.title}}</h2></a>
+        </div>
+        <div class="panel-body">
+          <span>{{jaunt.description}}</span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
 </script>
 
 
