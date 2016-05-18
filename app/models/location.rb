@@ -1,3 +1,4 @@
 class Location < ActiveRecord::Base
-  belongs_to :jaunt
+  has_many :jaunts, through: :jaunt_locations
+  has_many :jaunt_locations
 end
