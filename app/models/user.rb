@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :jaunts
   before_save { self.email = email.downcase }
+  mount_uploader :avatar, AvatarUploader
 
   validates :name,  presence: true, length: { maximum: 30 },uniqueness:
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
