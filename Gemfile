@@ -24,6 +24,7 @@ gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
 gem "oauth"
 gem "devise"
+gem "mini_magick"
 
 gem 'activerecord-session_store'
 gem 'carrierwave'

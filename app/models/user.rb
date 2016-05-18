@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :registerable,:omniauthable, :omniauth_providers => [:google_oauth2, :facebook]
+  devise :omniauthable, :omniauth_providers => [:google_oauth2, :facebook]
 
   has_many :jaunts
   before_save { self.email = email.downcase }
