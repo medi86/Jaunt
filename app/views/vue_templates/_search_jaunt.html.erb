@@ -1,19 +1,17 @@
 <script id="search-jaunt-template" type="text/template">
 
 <div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-primary">
-
-      <div class="panel-heading">
-        <h2 style="color: #fff">Search a Location by Address</h2>
-        <input id="autocomplete" v-el:auto-complete  placeholder="Search Jaunts" type="text" class="form-control"></input>
+  <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h3>Search a Location by Address</h3>
+        <input id="autocomplete" v-el:auto-complete  placeholder="Fake Name, 123 Fake st...." type="text" class="form-control"></input>
         <button class='btn btn-default' type='submit' v-on:click='clearSearch()'>Clear Search</button>
       </div>
       <div class="panel-body">
 
         <div class="panel panel-primary" v-for="(index, jaunt) in jaunts_with_locations.jaunts">
           <div class="panel-heading">
-            <a href= "/show/{{jaunt.id}}"><h2 style="color: #fff">{{jaunt.title}}</h2></a>
+            <a href= "/show/{{jaunt.id}}"><span style="color: #fff">{{jaunt.title}}</span></a>
           </div>
           <div class="panel-body">
             <div class='row'>
@@ -30,13 +28,11 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
 
       </div>
 
     </div>
-  </div>
 </div>
 
 </script>
