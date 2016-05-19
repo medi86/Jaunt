@@ -24,7 +24,14 @@
             method: "POST",
             url: "/search",
             data: { address: address }
-          }).then(function(searched_jaunts_with_locations) {self.jaunts_with_locations = searched_jaunts_with_locations})
+          }).then(function(searched_jaunts_with_locations) {
+            if(searched_jaunts_with_locations.jaunts.length === 0) {
+              alert("Your search yielded no results. Please try again.")
+            } else {
+            self.jaunts_with_locations = searched_jaunts_with_locations;
+            }
+            self.$els.autoComplete.value = ''
+          })
         })
       })
     },
