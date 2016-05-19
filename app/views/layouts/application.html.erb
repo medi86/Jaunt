@@ -14,8 +14,9 @@
   <body>
     <%= render "layouts/nav" %>
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <div class="alert alert-<%= message_type %>" id="flash"><%= message %></div>
       <% end %>
-    <%= yield %>
+      <%= yield %>
+      <script>$('#flash').delay(2000).fadeOut(800)</script>
   </body>
 </html>

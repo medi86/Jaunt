@@ -37,7 +37,7 @@ class JauntController < ApplicationController
   end
 
   def create
-    flash[:success] = "New jaunt! Thank you!"
+    flash[:success] = "Thank you! For creating a Jaunt!"
     render json: import(params[:jaunt])
   end
 
