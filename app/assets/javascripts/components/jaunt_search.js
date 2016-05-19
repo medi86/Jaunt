@@ -5,13 +5,14 @@
     template: "#search-jaunt-template",
     data: function() {
       return {
-        jaunts: []
+        jaunts_with_locations: {}
       }
     },
 
     ready: function() {
       var self = this
-      self.jaunts = gon.jaunts
+      self.jaunts_with_locations = gon.jaunts_with_locations
+
       google.maps.event.addDomListener(window, 'load', function () {
         var places = new google.maps.places.Autocomplete(self.$els.autoComplete)
         google.maps.event.addListener(places, 'place_changed', function () {
@@ -23,10 +24,15 @@
             method: "POST",
             url: "/search",
             data: { address: address }
-
-          }).then(function(jaunts) {self.jaunts = jaunts})
-        });
+          }).then(function(searched_jaunts_with_locations) {self.jaunts_with_locations = searched_jaunts_with_locations})
+        })
       })
     },
+
+    methods: {
+      clearSearch: function() {
+        this.jaunts_with_locations = gon.jaunts_with_locations
+      }
+    }
   })
 })();
