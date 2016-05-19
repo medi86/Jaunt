@@ -26,6 +26,7 @@ gem "oauth"
 gem "devise"
 gem "mini_magick"
 
+gem 'rails_real_favicon'
 gem 'activerecord-session_store'
 
 group :development, :test do
