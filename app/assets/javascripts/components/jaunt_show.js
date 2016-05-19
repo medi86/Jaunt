@@ -24,12 +24,14 @@
       })
       self.directionsDisplay.setMap(self.map)
       var waypoints = []
+      console.log(self.jaunt)
 
       if(self.jaunt.locations.length > 2) {
         self.jaunt.locations.slice(1, self.jaunt.locations.length - 1).forEach( function(jauntLocation) {
           waypoints.push({location: jauntLocation.address})
         })
       }
+      console.log(self.jaunt.locations)
 
       self.directionsService.route({
         origin: self.jaunt.locations[0].address,

@@ -30,10 +30,8 @@
         var place = places.getPlace()
         var address = place.formatted_address
         if (!address){ return false }
-
-        self.jaunt.locations.push({ address: address, description: "", name: place.name})
+        self.addLocation(place, address)
         document.getElementById('addLocation').value = ''
-
         self.getDirections()
        })
       })
@@ -71,6 +69,21 @@
          }).then(function(jaunt) { window.location.replace("/show/"+jaunt.id)})
        }
     },
+
+     addLocation: function(place, address) {
+      var location = { address: address, description: "", name: place.name}
+
+      if(place.formatted_phone_number) {
+        location.phone_number = place.formatted_phone_number
+      }
+      if (place.website) {
+        location.website = place.website
+      }
+      if (place.opening_hours) {
+        location.hours = place.opening_hours.weekday_text
+      }
+      this.jaunt.locations.push(location)
+     },
 
      moveLocationInList: function(from, to) {
        this.jaunt.locations.splice(to, 0, this.jaunt.locations.splice(from, 1)[0]);
