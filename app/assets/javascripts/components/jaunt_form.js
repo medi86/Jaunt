@@ -30,6 +30,7 @@
         var place = places.getPlace()
         var address = place.formatted_address
         if (!address){ return false }
+        window.place = place;
         self.addLocation(place, address)
         self.$els.addLocation.value = ''
         self.getDirections()
@@ -75,13 +76,22 @@
 
       if(place.formatted_phone_number) {
         location.phone_number = place.formatted_phone_number
+      } else {
+        location.phone_number = "No phone number is available"
       }
+
       if (place.website) {
         location.website = place.website
+      } else {
+        location.website = "No website is available"
       }
+
       if (place.opening_hours) {
-        location.hours = place.opening_hours.weekday_text
+        location.hours = place.opening_hours.weekday_text.join("\n")
+      } else {
+        location.hours = "No hours of operation available"
       }
+
       this.jaunt.locations.push(location)
      },
 
