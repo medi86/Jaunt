@@ -2,17 +2,27 @@ class JauntController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def search
+    final_search = []
     search = Location.where("address=?", params[:address]).map do |loc|
       loc.jaunts
     end.flatten
-    render json: search
+
+    locations = search.map do |jaunt|
+      jaunt.locations
+    end
+
+    render json: {jaunts: search, locations: locations}
   end
 
   def home
   end
 
   def index
-    gon.jaunts = Jaunt.all
+    locations = Jaunt.all.map do |jaunt|
+      jaunt.locations
+    end
+
+    gon.jaunts_with_locations = {jaunts: Jaunt.all, locations: locations}
     render "search"
   end
 

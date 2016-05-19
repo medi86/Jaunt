@@ -152,6 +152,11 @@ input {
  width: 500px;
 }
 
+.img-responsive {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .panel-info{
   border-top-width: 10px;
   border-left-width: 3px;
@@ -183,6 +188,7 @@ input {
   padding-right:0px;
   width: auto;
   height: auto;
+  background-color: rgb(34,34,34);
 }
 
 .googleicon{
@@ -190,19 +196,19 @@ input {
   padding-right: 0px;
   height: auto;
   width: auto;
-  background-image: url("aadventure.png");
+  background-color: rgb(34,34,34);
 }
 .facebookicon{
   padding-left: 0px;
   padding-right: 0px;
   height: auto;
   width: auto;
-  background-image: url("aadventure.png");
+  background-color: rgb(34,34,34);
 }
 .ourlogo{
   padding-left: 0px;
   padding-right: 0px;
   height: auto;
   width: auto;
-  background-image: url("aadventure.png");
+  background-color: rgb(34,34,34);
 }

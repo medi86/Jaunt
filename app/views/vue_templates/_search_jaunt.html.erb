@@ -1,28 +1,43 @@
 <script id="search-jaunt-template" type="text/template">
 
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="panel panel-info" id="searchbar">
-        <div class="panel-heading">
-          <h2>Search a Location by Address</h2>
-        </div>
-        <div class="panel-body" id="locationField">
-          <input class="form-control" id="autocomplete" v-el:auto-complete  placeholder="Search Jaunts" type="text"></input>
-        </div>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
 
-    <div class="col-xs-12">
-      <div class="panel panel-info" v-for="jaunt in jaunts">
-        <div class="panel-heading">
-          <a href= "/show/{{jaunt.id}}"><h2>{{jaunt.title}}</h2></a>
-        </div>
-        <div class="panel-body">
-          <span>{{jaunt.description}}</span>
-        </div>
+      <div class="panel-heading">
+        <h2 style="color: #fff">Search a Location by Address</h2>
+        <input id="autocomplete" v-el:auto-complete  placeholder="Search Jaunts" type="text" class="form-control"></input>
+        <button class='btn btn-default' type='submit' v-on:click='clearSearch()'>Clear Search</button>
       </div>
+      <div class="panel-body">
+
+        <div class="panel panel-primary" v-for="(index, jaunt) in jaunts_with_locations.jaunts">
+          <div class="panel-heading">
+            <a href= "/show/{{jaunt.id}}"><h2 style="color: #fff">{{jaunt.title}}</h2></a>
+          </div>
+          <div class="panel-body">
+            <div class='row'>
+              <div class="col-md-6">
+                <div class="well">
+                  <span>{{jaunt.description}}</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="well">
+                  <ul>
+                    <li v-for="location in jaunts_with_locations.locations[index]">{{location.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
+</div>
 
 </script>
 

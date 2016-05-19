@@ -24,9 +24,9 @@
                 Log-in
               <span class="caret"></span></a>
             <ul class="dropdown-menu box-shadow">
-              <li class="ourlogo img-resposive img-thumbnail"><a href="#"><%= link_to image_tag('member2.png'), login_path %></a></li>
-              <li class="googleicon img-responsive img-thumbnail"><a href="#"><%= link_to image_tag('googlelogin.png'), user_omniauth_authorize_path(:google_oauth2) %></a></li>
-              <li class="facebookicon img-responsive img-thumbnail"><a href="#"><%= link_to image_tag('facebooklogin.png'), user_omniauth_authorize_path(:facebook) %></a></li>
+              <li class="ourlogo img-resposive"><a href="#"><%= link_to image_tag('member2.png'), login_path %></a></li>
+              <li class="googleicon img-responsive"><a href="#"><%= link_to image_tag('googlelogin.png'), user_omniauth_authorize_path(:google_oauth2) %></a></li>
+              <li class="facebookicon img-responsive"><a href="#"><%= link_to image_tag('facebooklogin.png'), user_omniauth_authorize_path(:facebook) %></a></li>
             </ul>
             </li>
           <% end %>

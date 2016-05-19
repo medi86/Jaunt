@@ -33,7 +33,7 @@ RSpec.describe('Full Site', {type: :feature}) do
     user = User.create!(name: "dongmin", email: "medi8600@gmail.com", password: "asdf1234")
 
     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription', locations:
-                  [Location.new(address: '123 fake st', name: "fake name")])
+                  [Location.new(address: '123 fake st', name: "fake name", website:"nope", phone_number: "nope", hours: "nope")])
 
     page.visit login_path
     page.fill_in("session_email", with: "medi8600@gmail.com")
@@ -56,7 +56,7 @@ RSpec.describe('Full Site', {type: :feature}) do
 
   scenario('a user who is not-logged-in can only navigate the non-user sections of the page', {js: true}) do
     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription', locations:
-                  [Location.new(address: '123 fake st', name: "fake name")])
+                  [Location.new(address: '123 fake st', name: "fake name", website:"nope", phone_number: "nope", hours: "nope")])
 
     page.visit root_path
     assert page.has_content?("Find a Jaunt")
@@ -71,8 +71,8 @@ RSpec.describe('Full Site', {type: :feature}) do
     page.click_link("Sign-up")
     expect(page.current_path).to eql('/signup')
 
-    assert page.has_link?("Log-in")
-    page.click_link("Log-in")
+    page.visit login_path
+    assert page.has_content?("Log in")
     expect(page.current_path).to eql('/login')
 
     assert page.has_content?("Create Jaunts")
@@ -82,8 +82,8 @@ RSpec.describe('Full Site', {type: :feature}) do
 
   scenario('a user can find a jaunt', {js: true}) do
     jaunt = Jaunt.create!(title: 'testJaunt', description: 'testDescription',
-                          locations: [Location.new(address: '123 fake st', name: "fake name"),
-                                      Location.new(address: '123 superfake st', name: "superfake name")])
+                          locations: [Location.new(address: '123 fake st', name: "fake name", website:"nope", phone_number: "nope", hours: "nope"),
+                                      Location.new(address: '123 superfake st', name: "superfake name", website:"nope", phone_number: "nope", hours: "nope")])
     page.visit search_path
     assert page.has_content?('testJaunt')
     page.click_link('testJaunt')
