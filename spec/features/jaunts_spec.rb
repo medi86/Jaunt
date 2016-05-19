@@ -73,6 +73,7 @@ RSpec.describe('Full Site', {type: :feature}) do
 
     assert page.has_link?("Log-in")
     page.click_link("Log-in")
+    page.click_link("Log in")
     expect(page.current_path).to eql('/login')
 
     assert page.has_content?("Create Jaunts")
