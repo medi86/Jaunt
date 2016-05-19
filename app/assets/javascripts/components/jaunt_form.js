@@ -31,7 +31,7 @@
         var address = place.formatted_address
         if (!address){ return false }
         self.addLocation(place, address)
-        document.getElementById('addLocation').value = ''
+        self.$els.addLocation.value = ''
         self.getDirections()
        })
       })
