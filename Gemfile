@@ -21,7 +21,6 @@ gem 'bcrypt'
 gem "omniauth"
 gem "omniauth-oauth2"
 gem "omniauth-google-oauth2"
-gem "omniauth-facebook"
 gem "oauth"
 gem "devise"
 gem "mini_magick"

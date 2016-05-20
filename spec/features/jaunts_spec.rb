@@ -107,7 +107,6 @@ RSpec.describe('Full Site', {type: :feature}) do
 
     test_user = User.first
     expect(test_user.name).to eql("Test User")
-    expect(page.current_path).to eql("/users/#{test_user.id}")
-    assert page.has_content?("Test User's Jaunts")
+    expect(page.current_path).to eql("/")
   end
 end

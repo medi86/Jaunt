@@ -1,12 +1,20 @@
-<div class="container-fluid">
-  <div class="row">
-    <%= image_tag("jaunts.jpg", class: "img-responsive") %>
-    <br>
-    <div class="col-md-6">
-      <%= link_to 'Find Jaunts', search_path ,:class => "btn btn-primary btn-block" %>
-    </div>
-    <div class="col-md-6">
-      <%= link_to 'Create a Jaunt', new_jaunt_path ,:class => "btn btn-primary btn-block" %>
+<body class="back">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="homy col-xl-12">
+        <%= image_tag("jaunts.png", class: "homeimg img-responsive")%>
+      </div>
+      <br>
+      <div class="bg row">
+        <div class="col-md-3"></div>
+        <div class="find col-md-3">
+          <%= link_to image_tag('find.png', class:"well img-responsive"), search_path%>
+        </div>
+        <div class="create col-md-3">
+          <%= link_to image_tag('create.png', class:"well img-responsive"),new_jaunt_path%>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
     </div>
   </div>
-</div>
+</body>
