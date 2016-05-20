@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :omniauthable, :omniauth_providers => [:google_oauth2, :facebook]
+  devise :omniauthable, :omniauth_providers => [:google_oauth2]
 
   has_many :jaunts
   before_save { self.email = email.downcase }
