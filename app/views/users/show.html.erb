@@ -11,7 +11,8 @@
             <span> <%= link_to jaunt.title, show_jaunt_path(jaunt), {:style=>'color:#FFFFFF;', :class => "css_class"} %> </span>
           </div>
           <div class="panel-body">
-            <h2> <%= jaunt.description  %></h2>
+            <div class = "well well-lg"><%= jaunt.description %></div>
+            <p></p>
           </div>
         </div>
       <% end %>

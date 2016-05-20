@@ -37,7 +37,7 @@ class JauntController < ApplicationController
   end
 
   def create
-    flash[:success] = "New jaunt! Thank you!"
+    flash[:success] = "Thank you! For creating a Jaunt!"
     render json: import(params[:jaunt])
   end
 
@@ -49,6 +49,6 @@ class JauntController < ApplicationController
   def destroy
     jaunt = Jaunt.find(params[:id])
     jaunt.destroy
-    redirect_to jaunts_path
+    redirect_to "/users/#{current_user.id}"
   end
 end
