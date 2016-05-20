@@ -40,7 +40,7 @@
         travelMode: google.maps.TravelMode.WALKING
         }, function(response) { self.directionsDisplay.setDirections(response)})
 
-      $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-title').height()) - 50)
+      $('#jaunt-locations').height(($('#jaunt-map').height() + $('#jaunt-title').height()) - 65)
      },
 
     methods: {
