@@ -21,6 +21,7 @@
       maxZoom: 16,
       center: {lat: 41.8803, lng: -87.6249}
     })
+
     self.directionsDisplay.setMap(self.map)
     if(gon.editPage) {self.getDirections(); self.editPage = false}
 
